@@ -33,6 +33,7 @@ var SDK = {
                 cbsMail: cbsMail,
                 password: password
 
+
             },
             url: "/login",
             method: "POST"
@@ -41,6 +42,7 @@ var SDK = {
             //On login-error
             if (err) return cb(err);
             SDK.Storage.persist("cbsMail", data.id);
+            SDK.Storage.persist("type", data.type);
             cb(null, data);
 
         });

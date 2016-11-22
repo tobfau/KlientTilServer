@@ -22,7 +22,16 @@ $(document).ready(function () {
             //Login OK!
             $("#loginForm").find(".form-group").addClass("has-success");
 
+            if (data.type === "admin")
+
             window.location.href = "hjemStudent.html";
+
+            else if (data.type === "student") {
+                window.location.href = "hjemStudent.html";
+            }
+            else {
+                window.location.href = "hjemStudent.html";
+            }
 
         });
 
