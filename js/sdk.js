@@ -41,8 +41,8 @@ var SDK = {
 
             //On login-error
             if (err) return cb(err);
-            SDK.Storage.persist("cbsMail", data.id);
-            SDK.Storage.persist("type", data.type);
+            SDK.Storage.persist("tokenId", data.id);
+            SDK.Storage.persist("tokenUserType", data.type);
             cb(null, data);
 
         });
@@ -77,9 +77,9 @@ var SDK = {
     },
 
     logOut:function() {
-        SDK.Storage.remove("cbsMail");
-        SDK.Storage.remove("password");
-        SDK.Storage.remove("type");
+        SDK.Storage.remove("tokenID");
+        SDK.Storage.remove("tokenUserType");
+        //SDK.Storage.remove("user");
     },
 };
 function encryptDecrypt(input) {

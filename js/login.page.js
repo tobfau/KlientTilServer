@@ -14,7 +14,7 @@ $(document).ready(function () {
 
         SDK.login(email, pw, function(err, data){
 
-            //On wrong credentials
+            //feilaktig info fra bruker
             if(err) {
                 return $("#loginForm").find(".form-group").addClass("has-error");
             }
@@ -22,9 +22,9 @@ $(document).ready(function () {
             //Login OK!
             $("#loginForm").find(".form-group").addClass("has-success");
 
+            //if else statement for å skille brukertyper
             if (data.type === "admin")
-
-            window.location.href = "hjemStudent.html";
+                window.location.href = "hjemAdmin.html";
 
             else if (data.type === "student") {
                 window.location.href = "hjemStudent.html";
