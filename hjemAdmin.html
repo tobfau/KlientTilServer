@@ -1,10 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="lib/css/bootstrap.css">
+
     <meta charset="UTF-8">
-    <title>Adminsiden</title>
+    <title>Admin-siden</title>
+
 </head>
+
 <body>
+
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+
+            </button>
+
+
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <div class="navbar-form navbar-right">
+
+                <button id="adminLogOut" class="btn btn-success">Logg ut</button>
+            </div>
+        </div><!--/.navbar-collapse -->
+    </div>
+</nav>
+
+<!-- review -->
+<div class="page-header">
+    <h1>Velkommen som Administrator</h1>
+</div>
+
+<table class="table">
+    <thead>
+    <th>Reviews</th>
+    </thead>
+    <tbody id="adminReviewsTable">
+    </tbody>
+    <tr></tr>
+    </tbody>
+</table>
+
+</div>
+
+
+<script type="text/javascript" src="lib/js/jquery-3.1.1.js"></script>
+<script type="text/javascript" src="lib/js/bootstrap.js"></script>
+<script type="text/javascript" src="js/sdk.js"></script>
+<script type="text/javascript" src="js/hjemAdmin.page.js"></script>
+
 
 </body>
 </html>

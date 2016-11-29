@@ -17,6 +17,7 @@ $(document).ready(function () {
             //feilaktig info fra bruker
             if(err) {
                 return $("#loginForm").find(".form-group").addClass("has-error");
+                window.alert("feil");
             }
 
             //Login OK!
@@ -27,9 +28,6 @@ $(document).ready(function () {
                 window.location.href = "hjemAdmin.html";
 
             else if (data.type === "student") {
-                window.location.href = "hjemStudent.html";
-            }
-            else {
                 window.location.href = "hjemStudent.html";
             }
 
