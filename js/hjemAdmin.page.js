@@ -15,18 +15,17 @@ $(document).ready(function () {
     $.ajax({
         url: "http://localhost:5050/api/review/300",
         method: "GET",
-        dataTyper: "json",
-        contetType: "application/json",
+        dataType: "json",
+        contentType: "application/json",
 
         success: function (reviews) {
-
-            var reviews = JSON.parse(reviews)
-            console.log(reviews)
             reviews.forEach(function (reviews) {
 
                 $adminReviewsTable.append(
                     "<tr>" +
-                    "<td>" + reviews.user.id + "</td>" +
+                    "<td>" + reviews.id + "</td>" +
+                    "<td>" + reviews.rating + "</td>" +
+                    "<td>" + reviews.comment + "</td>" +
                     "<td><a role='button' href='' class='btn btn-success btn-lg'> Slett review</a></td>" +
                     "</tr>"
                 );
@@ -34,4 +33,6 @@ $(document).ready(function () {
         }
 
     });
+
+
 });
