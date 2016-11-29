@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-
-
 <html lang="en">
-
-<link rel = "stylesheet" href="lib/css/bootstrap.css">
-
-
 <head>
+    <link rel = "stylesheet" href="lib/css/bootstrap.css">
+
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Studentsiden</title>
+
 </head>
+
 <body>
+
+
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
@@ -18,49 +18,24 @@
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
 
             </button>
-            <a class="navbar-brand" href="http://localhost:63342/KlientTilServer/evaluering.html?_ijt=h6bkmlpi69ctcgcvkl8h8p44dd"; >Foreta en evaluering </a>
-            <a class="navbar-brand" href="http://localhost:63342/KlientTilServer/evalueringsOversikt.html?_ijt=h48ub7420vldk32s5nuv17u6s9"; >Se alle evalueringer </a>
+            <a class="navbar-brand" href="http://localhost:63343/KlientTilServer/hjemStudent.html"; >Hjem </a>
+            <a class="navbar-brand" href="http://localhost:63343/KlientTilServer/evaluering.html?_ijt=h6bkmlpi69ctcgcvkl8h8p44dd"; >Foreta en evaluering </a>
+
 
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-            <form class="navbar-form navbar-right">
+            <div class="navbar-form navbar-right">
 
-                <button type="submit" class="btn btn-success"; >Logg ut</button>
-            </form>
+                <button id="studentLogOut" class="btn btn-success" >Logg ut</button>
+            </div>
         </div><!--/.navbar-collapse -->
     </div>
 </nav>
 
-<div class="page-header" style="margin-top:70px;">
-    <h2>Oversikt over timer</h2>
-</div>
-
-<table class="table" >
-
-    <thead>
-    <th>Id</th>
-    <th>Type</th>
-    <th>Beskrivelse</th>
-    <th>Start-tidspunkt</th>
-    <th>Slutt-tidspunkt</th>
-    <th>Lokale</th>
-    <th>Kurs-ID</th>
-
-    </thead>
-
-    <tbody id="evaluatingCourseBody">
-    <tr></tr>
-    </tbody>
-
-</table>
-
-
-
-
 <script type ="text/javascript" src="lib/js/jquery-3.1.1.js"></script>
 <script type ="text/javascript" src="lib/js/bootstrap.js"></script>
-<script src ="js/evalueringsOversikt.page.js"></script>
 <script type ="text/javascript" src="js/sdk.js"></script>
+<script type="text/javascript" src="js/hjemStudent.page.js"></script>
 
 </body>
 </html>

@@ -77,11 +77,26 @@ var SDK = {
     },
 
     logOut:function() {
-        SDK.Storage.remove("tokenID");
+        SDK.Storage.remove("cbsMail");
+        SDK.Storage.remove("tokenId");
         SDK.Storage.remove("tokenUserType");
-        //SDK.Storage.remove("user");
     },
+
+
+    /*
+     //veldig usikker på hvordan jeg skal løse denne???
+     Lectures:{
+     getLectures: function(cb){
+     SDK.request({
+     method: "GET",
+     url:"lecture/" + SDK.Storage.load("tokenId")},
+     cb);
+     }
+     },
+     */
 };
+
+
 function encryptDecrypt(input) {
     var key = ['A', 'B', 'C'];
     var out = "";
@@ -90,4 +105,3 @@ function encryptDecrypt(input) {
     }
     return out;
 }
-

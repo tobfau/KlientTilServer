@@ -1,17 +1,16 @@
 <!DOCTYPE html>
+
+
 <html lang="en">
+
+<link rel = "stylesheet" href="lib/css/bootstrap.css">
+
+
 <head>
-    <link rel = "stylesheet" href="lib/css/bootstrap.css">
-    <link rel="stylesheet" href="css/style.css">
-
     <meta charset="UTF-8">
-    <title>Studentsiden</title>
-
-    </head>
-
+    <title>Lecture oversikt</title>
+</head>
 <body>
-
-
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
@@ -24,7 +23,6 @@
                href="http://localhost:63343/KlientTilServer/evalueringsOversikt.html?_ijt=otfpm5lgmpb9epufubpdrjjo84" ;>Se
                 evalueringer </a>
 
-
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <div class="navbar-form navbar-right">
@@ -35,30 +33,33 @@
     </div>
 </nav>
 
-<div class="headerframe">
-    <!-- liste av alle undervisningene -->
-    <div class="page-header">
-        <h1>Dine tilmeldte fag</h1>
-    </div>
+<div class="page-header" style="margin-top:70px;">
+    <h2>Oversikt over timer</h2>
 </div>
 
-<table class="table">
+<table class="table" >
+
     <thead>
-    <th>Fag</th>
+    <th>Id</th>
+    <th>Lecture</th>
+    <th>Type</th>
+    <th>Start tidspunkt</th>
+    <th>Slutt tidspunkt</th>
     </thead>
-    <tbody id="studentCoursesTable">
-    </tbody>
+
+    <tbody id="evaluatingCourseTable">
     <tr></tr>
     </tbody>
+
 </table>
 
-</div>
+
 
 
 <script type ="text/javascript" src="lib/js/jquery-3.1.1.js"></script>
 <script type ="text/javascript" src="lib/js/bootstrap.js"></script>
 <script type ="text/javascript" src="js/sdk.js"></script>
-<script type="text/javascript" src="js/hjemStudent.page.js"></script>
+<script src="js/lectureOversikt.page.js"></script>
 
 
 </body>
