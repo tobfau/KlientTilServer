@@ -3,7 +3,7 @@
  */
 
 
-$(document).ready(function(){
+$(document).ready(function () {
 
     $("#studentLogOut").on("click", function () {
         SDK.logOut();
@@ -16,7 +16,7 @@ $(document).ready(function(){
         var course = course.replace('#', '');
 
         var $evaluatingCourseTable = $("#evaluatingCourseTable")
-        var code = JSON.parse(localStorage.getItem("lectureCode"));
+        var lectureCode = JSON.parse(localStorage.getItem("lectureCode"));
 
 
         $.ajax({
@@ -27,17 +27,15 @@ $(document).ready(function(){
 
             success: function (lectures) {
 
-
-                lectures.forEach(function (lecture) {
-
+                lectures.forEach(function (lectureId) {
                     $evaluatingCourseTable.append(
                         "<tr>" +
-                        "<td>" + lecture.id + " </td>" +
-                        "<td>" + lecture.type + "</td>" +
-                        "<td>" + lecture.description + "</td>" +
-                        "<td>" + lecture.startDate + "</td>" +
-                        "<td>" + lecture.endDate + "</td>" +
-                        "<td><a role='button' href='evaluering.html' class='btn btn-success btn-lg'> Foreta review </a></td>" +
+                        "<td>" + lectureId.id + " </td>" +
+                        "<td>" + lectureId.type + "</td>" +
+                        "<td>" + lectureId.description + "</td>" +
+                        "<td>" + lectureId.startDate + "</td>" +
+                        "<td>" + lectureId.endDate + "</td>" +
+                        "<td class='btn-row'> <button class='btn btn-default evaluering' data-id=" + lectureId.id + ">Klik for at se kommentarer</button></td>" +
                         "</tr>"
                     );
                 });
@@ -50,6 +48,9 @@ $(document).ready(function(){
 
         });
     });
+    //metode som gjør at lectures blir lagt til de tilhørende reviews
+    $("#evaluatingCourseTable").on("click", ".evaluering", function () {
+        var id = $(this).data("id");
+        window.location.href = "/KlientTilServer/evaluering.html#" + id
     });
-
-
+});
