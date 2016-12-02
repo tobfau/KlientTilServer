@@ -20,10 +20,11 @@ $(document).ready(function () {
                 window.alert("feil");
             }
 
-            //Login OK!
+            //login ok
             $("#loginForm").find(".form-group").addClass("has-success");
 
             //if else statement for å skille brukertyper
+
             if (data.type === "admin")
                 window.location.href = "hjemAdmin.html";
 

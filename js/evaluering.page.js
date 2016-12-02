@@ -48,27 +48,8 @@ var __slice=[].slice;(function(e,t){var n;n=function(){function t(t,n){var r,i,s
         ratingsField.val(value);
     });
 
-        $("#insertReviewBtn").click(function (e) {
-            e.preventDefault()
-            var comment = $(".comment-area").val()
-            var rating = $("#rating").val()
 
-            console.log(comment)
-            console.log(rating)
-        })
 });
-
-
-    function studentReview(comment, rating) {
-        this.comment = comment;
-        this.rating = rating;
-    }
-
-    var studentReview = new studentReview("comment", 'rating');
-
-    console.table(studentReview);
-
-
 });
 
 
@@ -86,25 +67,86 @@ $(document).ready(function () {
         success: function (reviews) {
             var $studentReviewsTable = $("#studentReviewsTable");
 
+            reviews.forEach(function (review) {
 
-            //console.log(reviews)
+                var deleteButton;
 
-            reviews.forEach(function (reviews) {
+                //differansierer mellom innlogget brukers reviews og de som ikke er bruker sine
+                if (review.userId === SDK.Storage.load("tokenId")) {
+                    deleteButton = "<button class ='deleteButton button-primary button-block toDelete' data-id=" + review.id + "> Slett</button>"
+                } else {
+                    deleteButton = "<button class ='deleteButton button-danger button-block' data-id=" + review.id + "> Ikke ditt review</button>"
+                }
+
                 $studentReviewsTable.append(
                     "<tr>" +
-                    "<td>" + reviews.id + "</td>" +
-                    "<td>" + reviews.rating + "</td>" +
-                    "<td>" + reviews.comment + "</td>" +
-                    "<td><a role='button' href='' class='btn btn-success btn-lg'> Slett review</a></td>" +
+                    "<td>" + review.id + "</td>" +
+                    "<td>" + review.rating + "</td>" +
+                    "<td>" + review.comment + "</td>" +
+                    "<td>" + deleteButton + "</td>" +
                     "</tr>"
                 );
             });
         },
         error: function () {
-            alert("det er ingen kommentarer");
+            alert("Leksjonen er enda ikke vurdert av noen!");
         }
 
+    })
+
+    $("#studentReviewsTable").on('click', '.toDelete', function (e) {
+        var id = $(this).data("id");
+
+        $.ajax({
+            type: "DELETE",
+            url: SDK.serverURL + "/student/review",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify({
+                id: id,
+                userId: SDK.Storage.load("tokenId")
+            }),
+            success: function (res) {
+                location.reload()
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        })
     });
+
+
+    $("#insertReview").click(function (e) {
+        e.preventDefault()
+        var comment = $("#comment").val();
+        var rating = $("#rating").val();
+        var lecture = location.hash.replace('#', '');
+
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:5050/api/student/review",
+            contentType: "application/json",
+            data: JSON.stringify({
+                comment: comment,
+                rating: rating,
+                lectureId: lecture,
+                userId: SDK.Storage.load("tokenId")
+            }),
+
+            success: function (res) {
+                location.reload()
+
+            },
+            error: function (err) {
+                console.log(err);
+            }
+
+        })
+
+
+    })
+
+
+
 
 
 });

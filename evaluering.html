@@ -17,9 +17,6 @@
 
             </button>
             <a class="navbar-brand" href="http://localhost:63343/KlientTilServer/hjemStudent.html" ;>Hjem </a>
-            <a class="navbar-brand"
-               href="http://localhost:63343/KlientTilServer/evalueringsOversikt.html?_ijt=otfpm5lgmpb9epufubpdrjjo84" ;>Se
-                evalueringer </a>
 
         </div>
         <div id="navbar" class="navbar-collapse collapse">
@@ -31,39 +28,32 @@
     </div>
 </nav>
 
-//kode hentet ifra www.bootsnipp.com
-<div class="container">
-    <div class="row" style="margin-top:140px;">
-        <div class="col-md-6">
-            <div class="well well-sm">
-                <div class="text-right">
-                    <a class="btn btn-success btn-green" href="#reviews-anchor" id="open-review-box">Evaluer leksjonen</a>
-                </div>
-
-                <div class="row" id="post-review-box" style="display:none;">
-                    <div class="col-md-12">
-                        <form accept-charset="UTF-8" action="" method="post">
-                            <input id="ratings-hidden" name="rating" type="hidden">
-                            <textarea class="form-control animated" cols="50" id="new-review" name="comment" placeholder="Skriv en kommentar" rows="5"></textarea>
-
-                            <div class="text-right">
-                                <div class="stars starrr" data-rating="0"></div>
-                                <a class="btn btn-danger btn-sm" href="#" id="close-review-box" style="display:none; margin-right: 10px;">
-                                    <span class="glyphicon glyphicon-remove"></span>Avbryt</a>
-                                <button class="btn btn-success btn-lg" type="submit">Lagre</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
+<div style="margin-top:100px;">
+    <h2>Velkommen til evaluering siden</h2>
 </div>
+
+<form>
+    <div class="form-group">
+        <h3>Bedøm leksjonen</h3>
+        <label for="comment">Kommentar</label>
+        <input class="form-control" name="comment" id="comment">
+    </div>
+    <div class="form-group">
+        <label for="rating">Rating</label>
+        <select class="form-control" name="rating" id="rating">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+    </div>
+    <button id="insertReview" type="submit" class="btn btn-primary">Submit</button>
+</form>
 
 <!-- reviews -->
 <div class="page-header">
-    <h1>Oversikt over reviews</h1>
+    <h3>Oversikt over reviews</h3>
 </div>
 
 <table class="table">

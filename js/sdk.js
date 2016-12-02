@@ -47,25 +47,7 @@ var SDK = {
     },
 
 
-    /*
-
-
-
-     User: {
-     getAll: function (cb) {
-     SDK.request({method: "GET", url: "/login"}, cb);
-     },
-     current:function () {
-     return SDK.Storage.load("user");
-     }
-     },
-
-
-
-
-     };
-     */
-
+// hentet ifra bookstore eksempelet til jesper
     Storage: {
         prefix: "storeSDK",
         persist: function (key, value) {

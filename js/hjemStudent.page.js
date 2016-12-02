@@ -23,8 +23,8 @@ $(document).ready(function () {
 
             var courses = JSON.parse(courses)
             console.log(courses)
-            courses.forEach(function (course) {
 
+            courses.forEach(function (course) {
                 $studentCoursesTable.append(
                     "<tr>" +
                     "<td>" + course.code + "</td>" +

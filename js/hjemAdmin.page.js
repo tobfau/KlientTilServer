@@ -10,7 +10,6 @@ $("#adminLogOut").on("click", function () {
 $(document).ready(function () {
 
     var $adminReviewsTable = $("#adminReviewsTable")
-    var code = JSON.parse(localStorage.getItem("lectureID"));
 
     $.ajax({
         url: "http://localhost:5050/api/review/300",
