@@ -1,22 +1,26 @@
 <!DOCTYPE html>
+
+
 <html lang="en">
+
+<link rel="stylesheet" href="lib/css/bootstrap.css">
+
+
 <head>
-
-    <link rel = "stylesheet" href="lib/css/bootstrap.css">
-
-
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Lecture oversikt</title>
 </head>
 <body>
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
 
             </button>
             <a class="navbar-brand" href="http://localhost:63343/KlientTilServer/hjemAdmin.html" ;>Hjem </a>
+
 
         </div>
         <div id="navbar" class="navbar-collapse collapse">
@@ -28,31 +32,31 @@
     </div>
 </nav>
 
-<div style="margin-top:100px;">
-    <h2>Her kan du se alle evalueringer på denne leksjon</h2>
-</div>
-
-<!-- reviews -->
-<div class="page-header">
-    <h3>Oversikt over reviews</h3>
+<div class="page-header" style="margin-top:70px;">
+    <h2>Oversikt over timer</h2>
 </div>
 
 <table class="table">
+
     <thead>
-    <th>Review Id</th>
-    <th>Rating</th>
-    <th>Kommentar</th>
+    <th>Id</th>
+    <th>Lecture</th>
+    <th>Type</th>
+    <th>Start tidspunkt</th>
+    <th>Slutt tidspunkt</th>
     </thead>
 
-    <tbody id="adminReviewsTable">
+    <tbody id="courseTable">
     <tr></tr>
     </tbody>
+
 </table>
 
-<script type ="text/javascript" src="lib/js/jquery-3.1.1.js"></script>
-<script type ="text/javascript" src="lib/js/bootstrap.js"></script>
+
+<script type="text/javascript" src="lib/js/jquery-3.1.1.js"></script>
+<script type="text/javascript" src="lib/js/bootstrap.js"></script>
 <script type="text/javascript" src="js/sdk.js"></script>
-<script type="text/javascript" src="js/evalueringsOversikt.page.js"></script>
+<script type="text/javascript" src="js/adminLectureOversikt.page.js"></script>
 
 
 </body>

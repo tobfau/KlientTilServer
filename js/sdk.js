@@ -9,7 +9,7 @@ var SDK = {
 
     request: function (options, cb) {
 
-        //Perform XHR
+        //utfører XHR
         $.ajax({
             url: SDK.serverURL + options.url,
             method: options.method,
@@ -47,7 +47,7 @@ var SDK = {
     },
 
 
-// hentet ifra bookstore eksempelet til jesper
+    //hentet ifra bookstore eksempelet til jesper, gjør det mulig å bruke localStorage til load og remoce funksjoner
     Storage: {
         prefix: "storeSDK",
         persist: function (key, value) {
@@ -68,6 +68,7 @@ var SDK = {
         }
     },
 
+    //metode hentet fra jespers crash course i JS, fjerner
     logOut:function() {
         SDK.Storage.remove("cbsMail");
         SDK.Storage.remove("tokenId");
@@ -112,6 +113,8 @@ var SDK = {
 
      },
      */
+
+    //dekrypterings funksjon hentet fra mathiasLund, brukes for å kunne hashe det hashede passord for validering til login
     Decrypt: function (string) {
         var Base64 = {
             _keyStr: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",

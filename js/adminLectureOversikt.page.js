@@ -1,12 +1,11 @@
 /**
- * Created by bump94 on 14.11.2016.
+ * Created by bump94 on 02.12.2016.
  */
 
 
 $(document).ready(function () {
 
-    //metode hentet fra jespers crash course i JS
-    $("#studentLogOut").on("click", function () {
+    $("#adminLogOut").on("click", function () {
         SDK.logOut();
         window.location.href = "login.html";
     });
@@ -16,13 +15,10 @@ $(document).ready(function () {
         var course = location.hash;
         var course = course.replace('#', '');
 
-        var $evaluatingCourseTable = $("#evaluatingCourseTable")
+        var $courseTable = $("#courseTable")
         var lectureCode = JSON.parse(localStorage.getItem("lectureCode"));
 
-        /*
-         ajax call som henter alle lectures via userEndpoint på serverSiden
-         på bakgrunn av det bestemte course bruker er tilknyttet
-         */
+
         $.ajax({
             url: "http://localhost:5050/api/lecture/" + course,
             method: "GET",
@@ -32,12 +28,7 @@ $(document).ready(function () {
             success: function (lectures) {
 
                 lectures.forEach(function (lectureId) {
-
-                    /*
-                     tabell hvor lecture data legges inn i når det hentes fra server
-                     + knapp til å komme videre til reviews siden
-                     */
-                    $evaluatingCourseTable.append(
+                    $courseTable.append(
                         "<tr>" +
                         "<td>" + lectureId.id + " </td>" +
                         "<td>" + lectureId.type + "</td>" +
@@ -58,8 +49,8 @@ $(document).ready(function () {
         });
     });
     //metode som gjør at lectures blir lagt til de tilhørende reviews
-    $("#evaluatingCourseTable").on("click", ".evaluering", function () {
+    $("#courseTable").on("click", ".evaluering", function () {
         var id = $(this).data("id");
-        window.location.href = "/KlientTilServer/evaluering.html#" + id
+        window.location.href = "/KlientTilServer/evalueringsOversikt.html#" + id
     });
 });

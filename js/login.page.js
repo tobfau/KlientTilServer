@@ -3,7 +3,7 @@
  */
 
 
-
+//login funksjon laget på bagrunn av Jesper sitt eksempel i JS kurs
 $(document).ready(function () {
 
     $("#loginButton").on("click", function(e){
@@ -24,7 +24,6 @@ $(document).ready(function () {
             $("#loginForm").find(".form-group").addClass("has-success");
 
             //if else statement for å skille brukertyper
-
             if (data.type === "admin")
                 window.location.href = "hjemAdmin.html";
 
