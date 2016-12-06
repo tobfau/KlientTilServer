@@ -34,7 +34,7 @@ $(document).ready(function () {
                     if (review.userId === SDK.Storage.load("tokenId")) {
                         deleteButton = "<button class ='deleteButton button-primary button-block toDelete' data-id=" + review.id + "> Slett</button>"
                     } else {
-                        deleteButton = "<button class ='deleteButton button-danger button-block' data-id=" + review.id + "> Ikke ditt review</button>"
+                        deleteButton = "<button class ='deleteButton button-danger button-block' data-id=" + review.id + "> Du kan kun slette dine egne reviews</button>"
                     }
 
                     //tabell hvor review dataene legges inn i + knapp for å slette review
@@ -84,7 +84,10 @@ $(document).ready(function () {
             var rating = $("#rating").val();
             var lecture = location.hash.replace('#', '');
 
-            //ajax call hvor man poster et review via studentEndpoint på server siden
+            /*
+             ajax call hvor man poster et review via studentEndpoint på server siden
+             tar verdien av comment og rating + den leksjonen man er inne på og lagrer/poster den i DB
+             */
             $.ajax({
                 type: "POST",
                 url: "http://localhost:5050/api/student/review",

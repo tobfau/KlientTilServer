@@ -26,19 +26,33 @@ var SDK = {
         });
     },
 
+    /*
+     login funksjon laget på bagrunn av Jesper sitt eksempel i JS kurs
+     + hashing av passord fra mathias Lund
+     */
     login: function (cbsMail, password, cb) {
+
+        //hashing av passord - hentet fra Mathias Lund, endret variabelnavn
+        var SALT = "n0zaCTADRUuTb@JUp01n%5@(l@IAaLlZ";
+        var passwordPlusSalt = password + SALT;
+        var hashedPasswordPlusSalt = md5(passwordPlusSalt);
+        var passwordPlusSalt2 = hashedPasswordPlusSalt + SALT;
+        var hashedPasswordPlusSalt2 = md5(passwordPlusSalt2);
+
         this.request({
             data: {
                 cbsMail: cbsMail,
-                password: password
+                password: hashedPasswordPlusSalt2
 
             },
             url: "/login",
             method: "POST"
-        },  function (err, data) {
+        }, function (err, data) {
 
-            //On login-error
+            //feil i login
             if (err) return cb(err);
+
+            //definerer forskjellige brukertyper
             SDK.Storage.persist("tokenId", data.id);
             SDK.Storage.persist("tokenUserType", data.type);
             cb(null, data);
@@ -58,61 +72,23 @@ var SDK = {
             try {
                 return JSON.parse(val);
             }
-            catch (e){
+            catch (e) {
                 return val;
             }
 
         },
-        remove:function (key) {
+        remove: function (key) {
             window.localStorage.removeItem(this.prefix + key);
         }
     },
 
     //metode hentet fra jespers crash course i JS, fjerner
-    logOut:function() {
+    logOut: function () {
         SDK.Storage.remove("cbsMail");
         SDK.Storage.remove("tokenId");
         SDK.Storage.remove("tokenUserType");
     },
-    /*
-     login: function(mail, password, cb) {
 
-     var SALT = "n0zaCTADRUuTb@JUp01n%5@(l@IAaLlZ";
-     var passWithSalt = password + SALT;
-     var hashedPassWithSalt = md5(passWithSalt);
-     var passWithSalt2 = hashedPassWithSalt + SALT;
-     var hashedPassWithSalt2 = md5(passWithSalt2);
-
-     $.ajax({
-     type: 'POST',
-     url: SDK.serverURL + "/login",
-     contentType: "application/json; charset=utf-8",
-     data: JSON.stringify({
-     cbsMail: mail,
-     password: hashedPassWithSalt2
-     }),
-     dataType: "json",
-     success: function (res) {
-     var user = JSON.parse(atob(res))
-     console.log(user)
-     var userId = user.id
-     console.log(user.type);
-     SDK.Storage.persist("userId", userId);
-     if (user.type == "student") {
-     window.location.href = "hjemStudent.html";
-     } else if (user.type == "admin") {
-     window.location.href = "hjemAdmin.html";
-     } else if (user.type == "teacher") {
-     window.location.href = "hjemTeacher.html";
-     }
-     },
-     error: function (res) {
-     alert('Failed!');
-     }
-     });
-
-     },
-     */
 
     //dekrypterings funksjon hentet fra mathiasLund, brukes for å kunne hashe det hashede passord for validering til login
     Decrypt: function (string) {
@@ -205,12 +181,12 @@ var SDK = {
                 }
                 return t
             }
-    }
+        };
 
         return Base64.decode(string)
 
-}
-}
+    }
+};
 
 
 

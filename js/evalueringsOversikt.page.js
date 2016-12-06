@@ -16,7 +16,7 @@ $(document).ready(function () {
     $(document).ready(function () {
         var id = location.hash.replace('#', '');
 
-        //ajax call som henter alle reviews via userEndpoint på serverSiden på bakgrunn av reviewId
+        //ajax call som henter alle reviews via userEndpoint på server siden på bakgrunn av reviewId
         $.ajax({
             url: "http://localhost:5050/api/review/" + id,
             method: "GET",

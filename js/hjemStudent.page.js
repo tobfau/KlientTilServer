@@ -18,14 +18,10 @@ $(document).ready(function () {
     $.ajax({
         url: "http://localhost:5050/api/course/" + window.localStorage.getItem("storeSDKtokenId"),
         method: "GET",
-        dataTyper: "json",
-        contetType: "application/json",
+        dataType: "json",
+        contentType: "application/json",
 
         success: function (courses) {
-
-            var courses = JSON.parse(courses)
-            console.log(courses)
-
 
             //tabell hvor innlogget brukers courses blir lagt inn etter at ajax call har hentet de
             courses.forEach(function (course) {
