@@ -30,11 +30,9 @@ $(document).ready(function () {
 
                     var deleteButton;
 
-                    //differansierer mellom innlogget brukers reviews og de som ikke er bruker sine
-                    if (review.userId === SDK.Storage.load("tokenId")) {
-                        deleteButton = "<button class ='deleteButton button-primary button-block toDelete' data-id=" + review.id + "> Slett</button>"
-                    } else {
-                    }
+                    //knapp som gjør det mulig for administrator å slette alle reviewene
+                    deleteButton = "<button class ='deleteButton button-primary button-block toDelete' data-user=" + review.userId + " data-id=" + review.id + "> Slett</button>"
+
 
                     //tabell hvor review dataene legges inn i + knapp for å slette review
                     $adminReviewsTable.append(
@@ -56,6 +54,7 @@ $(document).ready(function () {
         //gjør det mulig å slette innlogget bruker sitt review på bakgrunn av reviewId og userId som definert på serverside
         $("#adminReviewsTable").on('click', '.toDelete', function (e) {
             var id = $(this).data("id");
+            var tokenId = $(this).data("user");
 
             $.ajax({
                 type: "DELETE",
@@ -63,7 +62,7 @@ $(document).ready(function () {
                 contentType: "application/json; charset=utf-8",
                 data: JSON.stringify({
                     id: id,
-                    userId: SDK.Storage.load("tokenId")
+                    userId: tokenId
                 }),
                 success: function (res) {
                     location.reload()
