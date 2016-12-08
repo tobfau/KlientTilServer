@@ -5,6 +5,7 @@
 
 $(document).ready(function () {
 
+    // log ut metode hentet fra jespers crash course i JS
     $("#adminLogOut").on("click", function () {
         SDK.logOut();
         window.location.href = "login.html";
@@ -12,6 +13,10 @@ $(document).ready(function () {
 
     $(document).ready(function () {
 
+        /*
+         location.hash betyr at den tar den "hash" verdi som finnes i urlen, eks. www.google.dk#ape,
+         altså ville det blitt #ape, på linje to sletter man # fra strengen 🙂
+         */
         var course = location.hash;
         var course = course.replace('#', '');
 
@@ -19,6 +24,10 @@ $(document).ready(function () {
         var lectureCode = JSON.parse(localStorage.getItem("lectureCode"));
 
 
+        /*
+         ajax forespørsel som henter alle lectures via userEndpoint på serverSiden
+         på bakgrunn av det bestemte course innlogget bruker er tilknyttet
+         */
         $.ajax({
             url: "http://localhost:5050/api/lecture/" + course,
             method: "GET",
@@ -27,6 +36,10 @@ $(document).ready(function () {
 
             success: function (lectures) {
 
+                /*
+                 tabell hvor lecture data legges inn i når det hentes fra server
+                 + knapp til å komme videre til oversikten over alle reviene
+                 */
                 lectures.forEach(function (lectureId) {
                     $courseTable.append(
                         "<tr>" +
@@ -35,7 +48,7 @@ $(document).ready(function () {
                         "<td>" + lectureId.description + "</td>" +
                         "<td>" + lectureId.startDate + "</td>" +
                         "<td>" + lectureId.endDate + "</td>" +
-                        "<td class='btn-row'> <button class='btn btn-default evaluering' data-id=" + lectureId.id + ">Se og opprett reviews</button></td>" +
+                        "<td class='btn-row'> <button class='btn btn-default evaluering' data-id=" + lectureId.id + ">Se og slett reviews</button></td>" +
                         "</tr>"
                     );
                 });

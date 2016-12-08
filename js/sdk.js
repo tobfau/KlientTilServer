@@ -90,7 +90,10 @@ var SDK = {
     },
 
 
-    //dekrypterings funksjon hentet fra mathiasLund, brukes for å kunne hashe det hashede passord for validering til login
+    /*
+     dekrypterings funksjon laget av mathiasLund, brukes for å kunne hashe det hashede passord for validering til login
+     https://github.com/MrHungeberg/UndervisningsEvaluering_klient/blob/master/js/SDK.js - link fra hvor metoden er hentet
+     */
     Decrypt: function (string) {
         var Base64 = {
             _keyStr: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",

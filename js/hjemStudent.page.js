@@ -14,7 +14,7 @@ $(document).ready(function () {
     var $studentCoursesTable = $("#studentCoursesTable")
 
 
-    //ajax call for å hente courses som innlogget bruker er tilmeldt
+    //ajax forespørsel for å hente courses som innlogget bruker er tilmeldt
     $.ajax({
         url: "http://localhost:5050/api/course/" + window.localStorage.getItem("storeSDKtokenId"),
         method: "GET",
@@ -23,7 +23,7 @@ $(document).ready(function () {
 
         success: function (courses) {
 
-            //tabell hvor innlogget brukers courses blir lagt inn etter at ajax call har hentet de
+            //tabell hvor de forskjellige kursene legges inn + knapp for å tilgå kursets leksjoner
             courses.forEach(function (course) {
                 $studentCoursesTable.append(
                     "<tr>" +
@@ -35,6 +35,7 @@ $(document).ready(function () {
         },
 
     });
+
     //metode som gjør at lectures blir lagt til de tilhørende courses
     $("#studentCoursesTable").on("click", ".lectures", function () {
         var course = $(this).data("course");

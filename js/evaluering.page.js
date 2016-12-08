@@ -14,9 +14,15 @@ $(document).ready(function () {
 
 //metode for å hente reviews
     $(document).ready(function () {
+
+
+        /*
+         location.hash betyr at den tar den "hash" verdi som finnes i urlen, eks. www.google.dk#ape,
+         altså ville det blitt #ape, med .replace sletter man # fra strengen 🙂
+         */
         var id = location.hash.replace('#', '');
 
-        //ajax call som henter alle reviews via userEndpoint på serverSiden på bakgrunn av reviewId
+        //ajax forespørsel som henter alle reviews via userEndpoint på serverSiden på bakgrunn av reviewId
         $.ajax({
             url: "http://localhost:5050/api/review/" + id,
             method: "GET",
@@ -48,6 +54,7 @@ $(document).ready(function () {
                     );
                 });
             },
+
             //får opp en melding på siden dersom leksjonen ikke inneholder reviews
             error: function () {
                 alert("Leksjonen er enda ikke vurdert av noen!");
@@ -59,7 +66,7 @@ $(document).ready(function () {
         $("#studentReviewsTable").on("click", ".toDelete", function (e) {
             var id = $(this).data("id");
 
-            //ajax call hvor man sletter et review via studentEndpoint på server siden
+            //ajax forespørsel for å slette et review via studentEndpoint på server
             $.ajax({
                 type: "DELETE",
                 url: SDK.serverURL + "/student/review",
@@ -85,7 +92,7 @@ $(document).ready(function () {
             var lecture = location.hash.replace('#', '');
 
             /*
-             ajax call hvor man poster et review via studentEndpoint på server siden
+             ajax forespørsel hvor man poster et review via studentEndpoint på server siden
              tar verdien av comment og rating + den leksjonen man er inne på og lagrer/poster den i DB
              */
             $.ajax({

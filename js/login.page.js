@@ -9,9 +9,11 @@ $(document).ready(function () {
     $("#loginButton").on("click", function(e){
         e.preventDefault();
 
+
         var email = $("#inputEmail").val();
         var pw = $("#inputPassword").val();
 
+        //login funksjonen som ligger i sdk filen
         SDK.login(email, pw, function(err, data){
 
             //feilaktig info fra bruker

@@ -11,7 +11,7 @@ $("#adminLogOut").on("click", function () {
 
 var $adminCoursesTable = $("#adminCoursesTable")
 
-
+//ajax forespørsel som henter alle kurser på bakgrunn av innlogget bruker
 $.ajax({
     url: "http://localhost:5050/api/course/" + window.localStorage.getItem("storeSDKtokenId"),
     method: "GET",
@@ -23,6 +23,7 @@ $.ajax({
         var courses = JSON.parse(courses)
         console.log(courses)
 
+        //tabell hvor de forskjellige kursene legges inn + knapp for å tilgå kursets leksjoner
         courses.forEach(function (course) {
             $adminCoursesTable.append(
                 "<tr>" +

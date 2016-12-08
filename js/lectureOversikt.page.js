@@ -5,7 +5,7 @@
 
 $(document).ready(function () {
 
-    //metode hentet fra jespers crash course i JS
+    // log ut metode hentet fra jespers crash course i JS
     $("#studentLogOut").on("click", function () {
         SDK.logOut();
         window.location.href = "login.html";
@@ -13,6 +13,11 @@ $(document).ready(function () {
 
     $(document).ready(function () {
 
+
+        /*
+         location.hash betyr at den tar den "hash" verdi som finnes i urlen, eks. www.google.dk#ape,
+         altså ville det blitt #ape, på linje to sletter man # fra strengen 🙂
+         */
         var course = location.hash;
         var course = course.replace('#', '');
 
@@ -20,7 +25,7 @@ $(document).ready(function () {
         var lectureCode = JSON.parse(localStorage.getItem("lectureCode"));
 
         /*
-         ajax call som henter alle lectures via userEndpoint på serverSiden
+         ajax forespørsel som henter alle lectures via userEndpoint på serverSiden
          på bakgrunn av det bestemte course bruker er tilknyttet
          */
         $.ajax({

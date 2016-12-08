@@ -14,9 +14,14 @@ $(document).ready(function () {
 
 //metode for å hente reviews
     $(document).ready(function () {
+
+        /*
+         location.hash betyr at den tar den "hash" verdi som finnes i urlen, eks. www.google.dk#ape,
+         altså ville det blitt #ape, med .replace sletter man # fra strengen 🙂
+         */
         var id = location.hash.replace('#', '');
 
-        //ajax call som henter alle reviews via userEndpoint på server siden på bakgrunn av reviewId
+        //ajax forespørsel som henter alle reviews via userEndpoint på server siden på bakgrunn av reviewId
         $.ajax({
             url: "http://localhost:5050/api/review/" + id,
             method: "GET",
@@ -56,6 +61,8 @@ $(document).ready(function () {
             var id = $(this).data("id");
             var tokenId = $(this).data("user");
 
+
+            //ajax forespørsel som gjør det mulig for admin å slette alle reviews
             $.ajax({
                 type: "DELETE",
                 url: SDK.serverURL + "/student/review",
